@@ -1,90 +1,42 @@
 const assert = require('assert');
-const formatDate = require('./index');
-
+const formatPoint= require('./index');
+const calculateDistancePoints = require('./calculateDistancePoints');
+const calculateStylePoints = require('./calculateStylePoints');
+// calculateDistancePoints.js
 describe('formatDate', () => {
-    describe('seconds', () => {
-        it('should return seconds', () => {
-            const actual = formatDate(23);
+    const calculateDistancePoints = (distance, hillSize, kPoint) => {
+        describe('calculateDistancePoints', () => {
+            it('sum up distance, hillSize, kPoint', () => {
+                const distance =  (x);
 
-            const expected = '23s';
+                const hillSize = (y);
 
-            assert.equal(actual, expected);
+                const kPoint =  (z);
+                assert.equal(distance, hillSize, kPoint);
+            });
         });
+    };
 
-        it('should return 0 seconds if no value is passed', () => {
-            const actual = formatDate();
-
-            const expected = '0s';
-
-            assert.equal(actual, expected);
+    // calculateStylePoints.js
+    const calculateStylePoints = (styleNotes) => {
+        describe('calculateStylePoints', () => {
+            it('sum up styleNotes', () => {
+                const styleNotes = (v);
+                
+                assert.equal(styleNotes);
+            });
         });
-    });
+    };
+    // calculateTotalPoints.js
 
-    describe('minutes', () => {
-        it('should work for one digit minutes and seconds', () => {
-            const actual = formatDate(65);
+    const calculateTotalPoints = (distance, hillSize, kPoint, styleNotes, windFactor, gateFactor) => {
+        const distancePoints = calculateDistancePoints(distance, hillSize, kPoint);
+        const stylePoints = calculateStylePoints(styleNotes);
 
-            const expected = '1m 5s';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should work for 2 digits minutes and seconds', () => {
-            const actual = formatDate(1414);
-
-            const expected = '23m 34s';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should return only minutes', () => {
-            const actual = formatDate(780);
-
-            const expected = '13m';
-
-            assert.equal(actual, expected);
-        });
-    });
-
-    describe('hours', () => {
-        it('should work for one digit hours, minutes and seconds', () => {
-            const actual = formatDate(3723);
-
-            const expected = '1h 2m 3s';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should work for 2 digit hours, minutes and seconds', () => {
-            const actual = formatDate(40333);
-
-            const expected = '11h 12m 13s';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should work for hours only', () => {
-            const actual = formatDate('7200');
-
-            const expected = '2h';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should work for hours and minutes', () => {
-            const actual = formatDate(77820);
-
-            const expected = '21h 37m';
-
-            assert.equal(actual, expected);
-        });
-
-        it('should work for hours and seconds', () => {
-            const actual = formatDate('10815');
-
-            const expected = '3h 15s';
-
-            assert.equal(actual, expected);
-        });
-    });
+        return distancePoints + stylePoints + windFactor + gateFactor;
+    };
 });
+
+module.exports = calculateDistancePoints;
+module.exports = calculateStylePoints;
+module.exports = calculateTotalPoints;
