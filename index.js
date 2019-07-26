@@ -3,8 +3,8 @@ const calculateDistancePoints = (distance, hillSize, kPoint) => {
 };
 
 const calculateStylePoints = (styleNotes) => {
-    const min = Math.min(styleNotes);
-    const max = Math.max(styleNotes);
+    const min = Math.min(...styleNotes);
+    const max = Math.max(...styleNotes);
     const styleNotesWithoutExtremeValues = styleNotes.filter(styleNote => {
         if (styleNote !== min && styleNote !== max) {
             return true
@@ -12,7 +12,6 @@ const calculateStylePoints = (styleNotes) => {
             return false
         }
     })
-    console.log(max, min)
     const styleNotesWithoutExtremeValuesSum = styleNotesWithoutExtremeValues.reduce((previousStyleNote, currentStyleNote) => {
         return previousStyleNote + currentStyleNote
     })
