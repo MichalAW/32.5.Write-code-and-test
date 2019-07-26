@@ -1,42 +1,12 @@
 const assert = require('assert');
-const formatPoint= require('./index');
-const calculateDistancePoints = require('./calculateDistancePoints');
-const calculateStylePoints = require('./calculateStylePoints');
+const points= require('./index');
+
 // calculateDistancePoints.js
 describe('formatDate', () => {
-    const calculateDistancePoints = (distance, hillSize, kPoint) => {
-        describe('calculateDistancePoints', () => {
-            it('sum up distance, hillSize, kPoint', () => {
-                const distance =  (x);
-
-                const hillSize = (y);
-
-                const kPoint =  (z);
-                assert.equal(distance, hillSize, kPoint);
-            });
+    describe('calculateStylePoints', () => {
+        it('correct style points', () => {
+            const stylePoints = points.calculateStylePoints([16, 16.5, 17, 16, 18])
+            assert.equal(stylePoints, 49.5 )
         });
-    };
-
-    // calculateStylePoints.js
-    const calculateStylePoints = (styleNotes) => {
-        describe('calculateStylePoints', () => {
-            it('sum up styleNotes', () => {
-                const styleNotes = (v);
-                
-                assert.equal(styleNotes);
-            });
-        });
-    };
-    // calculateTotalPoints.js
-
-    const calculateTotalPoints = (distance, hillSize, kPoint, styleNotes, windFactor, gateFactor) => {
-        const distancePoints = calculateDistancePoints(distance, hillSize, kPoint);
-        const stylePoints = calculateStylePoints(styleNotes);
-
-        return distancePoints + stylePoints + windFactor + gateFactor;
-    };
+    });
 });
-
-module.exports = calculateDistancePoints;
-module.exports = calculateStylePoints;
-module.exports = calculateTotalPoints;
