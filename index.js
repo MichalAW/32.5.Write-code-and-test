@@ -5,14 +5,10 @@ const calculateDistancePoints = (distance, hillSize, kPoint) => {
 const calculateStylePoints = (styleNotes) => {
     const min = Math.min(...styleNotes);
     const max = Math.max(...styleNotes);
-    const styleNotesWithoutExtremeValues = styleNotes.filter(styleNote => {
-        if (styleNote !== min && styleNote !== max) {
-            return true
-        } else {
-            return false
-        }
-    })
-    const styleNotesWithoutExtremeValuesSum = styleNotesWithoutExtremeValues.reduce((previousStyleNote, currentStyleNote) => {
+    delete styleNotes[styleNotes.findIndex(i => i === min)];
+    delete styleNotes[styleNotes.findIndex(i => i === max)];
+   
+    const styleNotesWithoutExtremeValuesSum = styleNotes.reduce((previousStyleNote, currentStyleNote) => {
         return previousStyleNote + currentStyleNote
     })
     return styleNotesWithoutExtremeValuesSum;
